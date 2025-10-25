@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from utils.helpers import log
 
 
-def login_google(driver):
+def login_google(driver, config):
     log("🔐 Acessando página de login...")
     driver.get("https://account.google.com")
 
