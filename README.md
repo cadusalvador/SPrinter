@@ -94,6 +94,7 @@ SPrinter/
 │   ├── driver.py           # Inicialização e configuração do WebDriver
 │   ├── screenshot.py       # Funções de captura de tela
 │   └── helpers.py          # Funções auxiliares
+├── prints                  
 ├── .env                    # Variáveis de ambiente
 ├── requirements.txt        # Dependências do projeto
 └── README.md               # Este arquivo
