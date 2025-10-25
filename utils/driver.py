@@ -1,12 +1,14 @@
+import os
+import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 from utils.helpers import log
 
-def start_driver_window(first_url="http://www.google.com", chromedriver_path=None):
+def start_driver_window(config, first_url="http://www.google.com"):
     try:
-        service = ChromeService(chromedriver_path)
-        options = webdriver.ChromeOptions()
-
+        options = Options()
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--disable-gpu")
@@ -14,10 +16,15 @@ def start_driver_window(first_url="http://www.google.com", chromedriver_path=Non
         options.add_argument("--disable-software-rasterizer")
         options.add_argument("--ignore-certificate-errors")
         options.add_argument("--remote-debugging-port=9222")
-        options.add_argument("--headless=new")
         options.add_argument("--window-size=1920,1080")
 
-        options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+        user_profile = config["CHROME_USER_PROFILE"]
+        options.add_argument(f"--user-data-dir={os.path.dirname(user_profile)}")
+        options.add_argument(f"--profile-directory={os.path.basename(user_profile)}")
+
+        options.binary_location = config["BINARY_LOCATION"]
+
+        service = Service(ChromeDriverManager().install())
 
         driver = webdriver.Chrome(service=service, options=options)
         driver.get(first_url)

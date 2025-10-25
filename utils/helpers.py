@@ -17,10 +17,12 @@ def load_env():
         "LOOKER_PASSWORD": os.getenv("LOOKER_PASSWORD"),
         "CHROME_DRIVER_PATH": os.getenv("CHROME_DRIVER_PATH"),
         "LOOKER_URL_VISAO_GERAL": os.getenv("LOOKER_URL_VISAO_GERAL"),
-        "PRINT_PATH": os.getenv("PRINT_PATH")
+        "PRINT_PATH": os.getenv("PRINT_PATH"),
+        "CHROME_USER_PROFILE": os.getenv("CHROME_USER_PROFILE"),
+        "BINARY_LOCATION": os.getenv("BINARY_LOCATION")
     }
     
-    missing = [k for k, v in config.items if not v]
+    missing = [k for k, v in config.items() if not v]
     if missing:
         raise ValueError(f"❌ Variáveis de ambiente ausentes: {', '.join(missing)}")
     

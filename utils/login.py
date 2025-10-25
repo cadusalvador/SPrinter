@@ -11,7 +11,7 @@ def login_google(driver, config):
 
     try:
         wait = WebDriverWait(driver, 30)
-        email_input = wait.until(EC.presence_of_element_located((By.ID, "identifierId")))
+        email_input = wait.until(EC.presence_of_element_located((By.NAME, "identifier")))
         email_input.send_keys(config["LOOKER_EMAIL"])
         driver.find_element(By.ID, "identifierNext").click()
 
