@@ -13,13 +13,13 @@ def load_env():
 
     config = {
         "LOOKER_URL": os.getenv("LOOKER_URL"),
-        "LOOKER_EMAIL": os.getenv("LOOKER_EMAIL"),
-        "LOOKER_PASSWORD": os.getenv("LOOKER_PASSWORD"),
-        "CHROME_DRIVER_PATH": os.getenv("CHROME_DRIVER_PATH"),
         "LOOKER_URL_VISAO_GERAL": os.getenv("LOOKER_URL_VISAO_GERAL"),
+        "SEATALK_WEBHOOK": os.getenv("SEATALK_WEBHOOK"),
+        "CHROME_DRIVER_PATH": os.getenv("CHROME_DRIVER_PATH"),
         "PRINT_PATH": os.getenv("PRINT_PATH"),
-        "CHROME_USER_PROFILE": os.getenv("CHROME_USER_PROFILE"),
-        "BINARY_LOCATION": os.getenv("BINARY_LOCATION")
+        "BINARY_LOCATION": os.getenv("BINARY_LOCATION"),
+        "PAGE_LOAD_TIMEOUT": os.getenv("PAGE_LOAD_TIMEOUT"),
+        "HEADLESS": os.getenv("HEADLESS")
     }
     
     missing = [k for k, v in config.items() if not v]

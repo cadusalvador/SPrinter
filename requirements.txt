@@ -1,2 +1,4 @@
 selenium==4.24.0
 python-dotenv==1.0.1
+requests>=2.28
+Pillow>=9.0

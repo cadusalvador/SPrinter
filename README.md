@@ -78,10 +78,10 @@ python main.py
 
 O **SPrinter** irá:
 1. Iniciar o Chrome em modo headless  
-2. Acessar o Looker e realizar login  
+2. Acessar o Looker  
 3. Navegar até o dashboard configurado  
 4. Capturar o screenshot  
-5. Salvar a imagem na pasta definida (`/screenshots`)  
+5. Salvar a imagem na pasta definida (`/prints`)  
 
 ---
 
@@ -92,10 +92,12 @@ SPrinter/
 ├── main.py                 # Script principal
 ├── utils/
 │   ├── driver.py           # Inicialização e configuração do WebDriver
+│   ├── helpers.py          # Funções Auxiliares
 │   ├── screenshot.py       # Funções de captura de tela
-│   └── helpers.py          # Funções auxiliares
+│   └── seatalk_sender.py   # Funções de envio da imagem
 ├── prints                  
 ├── .env                    # Variáveis de ambiente
+├── .gitignore              # Dependencias que não irão para o github
 ├── requirements.txt        # Dependências do projeto
 └── README.md               # Este arquivo
 ```
@@ -107,7 +109,7 @@ SPrinter/
 Você também pode importar o SPrinter em outros scripts:
 
 ```python
-from utils.screenshot import capture_dashboard
+from utils.screenshot import take_fullpage_screenshot
 
 dashboards = [
     "https://seu-dominio.looker.com/dashboards/1",

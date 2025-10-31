@@ -1,36 +1,27 @@
-import os
-import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from utils.helpers import log
 
-def start_driver_window(config, first_url="http://www.google.com"):
-    try:
-        options = Options()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--disable-extensions")
-        options.add_argument("--disable-software-rasterizer")
-        options.add_argument("--ignore-certificate-errors")
-        options.add_argument("--remote-debugging-port=9222")
-        options.add_argument("--window-size=1920,1080")
+def create_chrome_driver(config, headless=True):
+    chrome_options = Options()
+    if headless:
+        chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--window-size=1920,1080")
+    else:
+        chrome_options.add_argument("--start-maximized")
+        
+        
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    
+    chrome_driver_path = config["CHROME_DRIVER_PATH"]
+    page_load_timeout = int(config.get("PAGE_LOAD_TIMEOUT", 30))
 
-        user_profile = config["CHROME_USER_PROFILE"]
-        options.add_argument(f"--user-data-dir={os.path.dirname(user_profile)}")
-        options.add_argument(f"--profile-directory={os.path.basename(user_profile)}")
+    service = Service(chrome_driver_path)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
-        options.binary_location = config["BINARY_LOCATION"]
-
-        service = Service(ChromeDriverManager().install())
-
-        driver = webdriver.Chrome(service=service, options=options)
-        driver.get(first_url)
-
-        log(f"✅ Driver iniciado e navegando para: {first_url}")
-        return driver
-    except Exception as e:
-        log(f"❌ Erro ao iniciar o driver: {e}")
-        return None
+    driver.set_page_load_timeout(page_load_timeout)
+    log(f"✅ Driver iniciado e navegando para: {config["LOOKER_URL_VISAO_GERAL"]}")
+    return driver
