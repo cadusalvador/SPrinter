@@ -7,7 +7,7 @@ def create_chrome_driver(config, headless=True):
     chrome_options = Options()
     if headless:
         chrome_options.add_argument("--headless=new")
-        chrome_options.add_argument("--window-size=1920,1080")
+        chrome_options.add_argument("--window-size=1920,1440")
     else:
         chrome_options.add_argument("--start-maximized")
         

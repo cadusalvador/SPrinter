@@ -10,3 +10,4 @@ __pycache__/
 venv/
 instance/
 .DS_Store
+SPrinter.log

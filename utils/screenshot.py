@@ -1,6 +1,6 @@
 import os
 import time
-from utils.helpers import log
+from utils.logs import log
 from PIL import Image
 from io import BytesIO
 
