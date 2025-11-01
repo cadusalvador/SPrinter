@@ -32,3 +32,5 @@ def executar_ciclo_produtividade():
 # --- Execução principal ---
 if __name__ == "__main__":
     executar_ciclo_produtividade()
+
+    
