@@ -36,5 +36,5 @@ jobs:
       - name: 🚀 Executar SPrinter
         run: |
           echo "==== INICIANDO EXECUÇÃO $(date) ===="
-          python robo.py
+          python main.py
           echo "==== EXECUÇÃO FINALIZADA $(date) ===="
