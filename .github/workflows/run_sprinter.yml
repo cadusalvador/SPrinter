@@ -27,6 +27,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: ⚙️ Configurar variáveis de ambiente
+        run: |
+          echo "LOOKER_URL=${{ secrets.LOOKER_URL }}" >> $GITHUB_ENV
+          echo "LOOKER_URL_VISAO_GERAL=${{ secrets.LOOKER_URL_VISAO_GERAL }}" >> $GITHUB_ENV
+          echo "APP_ID=${{ secrets.APP_ID }}" >> $GITHUB_ENV
+          echo "APP_SECRET=${{ secrets.APP_SECRET }}" >> $GITHUB_ENV
+          echo "LINK_APP_TOKEN=${{ secrets.LINK_APP_TOKEN }}" >> $GITHUB_ENV
+          echo "SEATALK_WEBHOOK=${{ secrets.SEATALK_WEBHOOK }}" >> $GITHUB_ENV
+          echo "CHROME_DRIVER_PATH=${{ secrets.CHROME_DRIVER_PATH }}" >> $GITHUB_ENV
+          echo "PRINT_PATH=${{ secrets.PRINT_PATH }}" >> $GITHUB_ENV
+          echo "BINARY_LOCATION=${{ secrets.BINARY_LOCATION }}" >> $GITHUB_ENV
+          echo "PAGE_LOAD_TIMEOUT=${{ secrets.PAGE_LOAD_TIMEOUT }}" >> $GITHUB_ENV
+          echo "HEADLESS=${{ secrets.HEADLESS }}" >> $GITHUB_ENV
+
       - name: 🧰 Instalar Chrome e Chromedriver
         run: |
           sudo apt update
