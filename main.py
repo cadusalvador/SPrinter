@@ -22,7 +22,7 @@ def executar_ciclo_produtividade():
         screenshot_path = take_fullpage_screenshot(driver, config["PRINT_PATH"])
         print("Screenshor salvo em: ", screenshot_path)
 
-        send_image_to_seatalk(config["SEATALK_WEBHOOK"], screenshot_path, "📊 Relatório de produtividade atualizado!")
+        send_image_to_seatalk(config["SEATALK_WEBHOOK"], screenshot_path, "📊 Visão Geral")
         log("✅ Ciclo concluído com sucesso.")
     finally:
         if driver:
@@ -32,5 +32,3 @@ def executar_ciclo_produtividade():
 # --- Execução principal ---
 if __name__ == "__main__":
     executar_ciclo_produtividade()
-
-    
