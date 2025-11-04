@@ -1,8 +1,5 @@
-import requests
 import httpx
 import base64
-import os
-from pathlib import Path
 from utils.logs import log
 
 
@@ -17,7 +14,7 @@ def send_image_to_seatalk(webhook_url, image_path, message_text="📊 Relatório
 
             json_payload = {
                  "tag": "image",
-                 "image-base64": {
+                 "image_base64": {
                       "content": img_base64
                  }
             }
@@ -26,7 +23,7 @@ def send_image_to_seatalk(webhook_url, image_path, message_text="📊 Relatório
             log(f"Status code: {response.status_code}")
             log(f"Resposta SeaTalk: {response.text}")
         
-            if response.status_code ==200:
+            if response.status_code == 200:
                 log("📨 Imagem enviada com sucesso para o grupo SeaTalk ✅")
                 return True
             else:
