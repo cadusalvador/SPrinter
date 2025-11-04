@@ -1,0 +1,40 @@
+name: Executar SPrinter (a cada 1h20)
+
+on:
+  schedule:
+    # Execuções a cada 1h20: 00:00, 01:20, 02:40, 04:00, ...
+    - cron: '0 0-23/1 * * *'
+    - cron: '20 1-23/1 * * *'
+    - cron: '40 2-23/1 * * *'
+  workflow_dispatch:
+
+jobs:
+  executar_sprinter:
+    runs-on: ubuntu-latest
+    name: Rodar SPrinter automaticamente
+
+    steps:
+      - name: 📥 Baixar código
+        uses: actions/checkout@v3
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🧰 Instalar Chrome e Chromedriver
+        run: |
+          sudo apt update
+          sudo apt install -y chromium-browser chromium-chromedriver
+          sudo ln -s /usr/bin/chromium-browser /usr/bin/google-chrome || true
+
+      - name: 🚀 Executar SPrinter
+        run: |
+          echo "==== INICIANDO EXECUÇÃO $(date) ===="
+          python main.py
+          echo "==== EXECUÇÃO FINALIZADA $(date) ===="
