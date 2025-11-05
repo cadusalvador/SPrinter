@@ -1,5 +1,6 @@
 # main.py
 import time
+from elmo.elmo_main import executar_elmo
 from utils.driver import create_chrome_driver
 from utils.screenshot import take_fullpage_screenshot
 from utils.seatalk_sender import send_image_to_seatalk
@@ -24,6 +25,9 @@ def executar_ciclo_produtividade():
 
         send_image_to_seatalk(config["SEATALK_WEBHOOK"], screenshot_path, "📊 Visão Geral")
         log("✅ Ciclo concluído com sucesso.")
+
+        executar_elmo()
+
     finally:
         if driver:
             driver.quit()

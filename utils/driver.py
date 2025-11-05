@@ -4,11 +4,11 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from utils.helpers import log
 
-def create_chrome_driver(config, headless=True):
+def create_chrome_driver(config, headless=True, window_size="1920,1440"):
     chrome_options = Options()
     if headless:
         chrome_options.add_argument("--headless=new")
-        chrome_options.add_argument("--window-size=1920,1440")
+        chrome_options.add_argument(f"--window-size={window_size}")
     else:
         chrome_options.add_argument("--start-maximized")
 
@@ -18,7 +18,7 @@ def create_chrome_driver(config, headless=True):
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--disable-infobars")
-    
+
     page_load_timeout = int(config.get("PAGE_LOAD_TIMEOUT", 30))
 
     service = Service(ChromeDriverManager().install())

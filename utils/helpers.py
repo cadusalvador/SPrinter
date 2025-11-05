@@ -20,8 +20,12 @@ def load_env():
         "PRINT_PATH": os.getenv("PRINT_PATH"),
         "BINARY_LOCATION": os.getenv("BINARY_LOCATION"),
         "PAGE_LOAD_TIMEOUT": os.getenv("PAGE_LOAD_TIMEOUT"),
-        "HEADLESS": os.getenv("HEADLESS")
-   
+        "HEADLESS": os.getenv("HEADLESS"),
+        
+        # -- Variaveis Elmo --
+        "ELMO_SEATALK_WEBHOOK_URL": os.getenv("ELMO_SEATALK_WEBHOOK_URL"),
+        "ELMO_PRINT_PATH": os.getenv("ELMO_PRINT_PATH"),
+        "ELMO_LOOKER_URL_FECHAMENTO": os.getenv("ELMO_LOOKER_URL_FECHAMENTO")
     }
     
     missing = [k for k, v in config.items() if not v]
