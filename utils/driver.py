@@ -23,5 +23,5 @@ def create_chrome_driver(config, headless=True):
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     driver.set_page_load_timeout(page_load_timeout)
-    log(f"✅ Driver iniciado e navegando para: {config["LOOKER_URL_VISAO_GERAL"]}")
+    log(f'✅ Driver iniciado e navegando para: {config["LOOKER_URL_VISAO_GERAL"]}')
     return driver
