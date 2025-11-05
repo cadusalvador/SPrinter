@@ -40,6 +40,9 @@ jobs:
           echo "BINARY_LOCATION=${{ secrets.BINARY_LOCATION }}" >> $GITHUB_ENV
           echo "PAGE_LOAD_TIMEOUT=${{ secrets.PAGE_LOAD_TIMEOUT }}" >> $GITHUB_ENV
           echo "HEADLESS=${{ secrets.HEADLESS }}" >> $GITHUB_ENV
+          echo "ELMO_SEATALK_WEBHOOK_URL=${{ secrets.ELMO_SEATALK_WEBHOOK_URL }}" >> $GITHUB_ENV
+          echo "ELMO_PRINT_PATH=${{ secrets.ELMO_PRINT_PATH }}" >> $GITHUB_ENV
+          echo "ELMO_LOOKER_URL_FECHAMENTO=${{ secrets.ELMO_LOOKER_URL_FECHAMENTO }}" >> $GITHUB_ENV
       
       - name: 🧰 Instalar Google Chrome
         run: |
